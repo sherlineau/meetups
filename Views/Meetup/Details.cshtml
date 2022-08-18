@@ -1,0 +1,35 @@
+@model Meetup
+@Model.Title page!
+@{
+  bool creator = Model.UserId == Context.Session.GetInt32("UUID");
+
+  bool isJoined = Model.Participants.Any(g => g.UserId == Context.Session.GetInt32("UUID"));
+}
+
+@if (creator)
+{
+  <form asp-controller="Meetup" asp-action="Delete" asp-route-meetupId="@Model.MeetupId">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+}
+else
+{
+  <form asp-controller="Meetup" asp-action="Join" asp-route-meetupId="@Model.MeetupId">
+    @if (isJoined)
+    {
+      <button class="btn btn-warning">Leave</button>
+    }
+    else
+    {
+      <button class="btn btn-success">Join</button>
+    }
+  </form>
+}
+
+@foreach (UserMeetupParticipant part in Model.Participants)
+{
+  if(part.Participant != null)
+  {
+    <li>@part.Participant.Name</li>
+  }
+}

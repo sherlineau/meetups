@@ -1,0 +1,33 @@
+@{
+  ViewData["Title"] = "Create a Meetup";
+}
+@model Meetup
+heres my new form!
+<form asp-controller="Meetup" asp-action="Create">
+  <div class="mb-3">
+    <label asp-for="Title" class="form-label"></label>
+    <span asp-validation-for="Title" class="text-danger font-weight-bold"></span>
+    <input asp-for="Title" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Date" class="form-label"></label>
+    <span asp-validation-for="Date" class="text-danger font-weight-bold"></span>
+    <input asp-for="Date" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="DurationLength" class="form-label"></label>
+    <span asp-validation-for="DurationLength" class="text-danger font-weight-bold"></span>
+    <input asp-for="DurationLength" class="form-control" />
+    <select asp-for="DurationType">
+      <option value=" Minutes">Minutes</option>
+      <option value=" Hours">Hours</option>
+      <option value=" Days">Days</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <span asp-validation-for="Description" class="text-danger font-weight-bold"></span>
+    <input asp-for="Description" class="form-control" />
+  </div>
+  <button>submit</button>
+</form>

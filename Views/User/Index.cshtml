@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+@model User
+
+@{
+    User newUser = new User();
+    LoginUser login = new LoginUser();
+}
+
+<div class="row">
+    <div class="col w-75 mx-auto p-6">
+        <partial name="_Register" model="@newUser"></partial>
+    </div>
+    <div class="col w-75 mx-auto p-6">
+        <partial name="_Login" model="@login"></partial>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model List<Meetup>
+
+<h1>Hello, @Context.Session.GetString("Name")</h1>
+
+<table class="table">
+  <thead>
+    <th>Event</th>
+    <th>Date</th>
+    <th>Participants</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    @foreach (Meetup meetup in Model)
+    {
+      bool creator = meetup.UserId == Context.Session.GetInt32("UUID");
+      bool isJoined = meetup.Participants.Any(g => g.UserId == Context.Session.GetInt32("UUID"));
+      DateTime date = DateTime.Now;
+      if (meetup.Date != null)
+      {
+        date = (DateTime)meetup.Date;
+      }
+      <tr>
+        <td>
+          <a asp-controller="Meetup" asp-action="Details" asp-route-meetupId="@meetup.MeetupId">@meetup.Title</a>
+        </td>
+        <td>@date.ToString("MMM dd, yyyy")</td>
+        <td>@meetup.Participants.Count</td>
+        <td>
+          @if (creator)
+          {
+            <form asp-controller="Meetup" asp-action="Delete" asp-route-meetupId="@meetup.MeetupId">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          }
+          else
+          {
+            <form asp-controller="Meetup" asp-action="Join" asp-route-meetupId="@meetup.MeetupId">
+              @if (isJoined)
+              {
+                <button class="btn btn-warning">Leave</button>
+              }
+              else
+              {
+                <button class="btn btn-success">Join</button>
+              }
+            </form>
+          }
+
+
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+<div class="d-flex flex-row-reverse">
+    <a asp-controller="Meetup" asp-action="New" class="btn btn-primary btn-lg">Add New Activity</a>
+</div>
