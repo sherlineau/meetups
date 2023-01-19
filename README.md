@@ -6,17 +6,17 @@ Demo Credentials:
 demo2@test.com
 Password1!
 
-#Features
+# Features
 - create account(s)
 - create meetups(events)
   - join meetups
   - delete meetups (only available to creator)
   - meetups must be in future
   
-#Utilized Languages - Frameworks - Packages
+# Utilized Languages - Frameworks - Packages
 ## Languages
 - C#
 - Razor (HTML)
 
-##Frameworks
+## Frameworks
 - Entity Framework (mysql)
