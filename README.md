@@ -21,3 +21,4 @@ Demo Credentials:
 
 ## Frameworks
 - Entity Framework (mysql)
+- Identity
