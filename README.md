@@ -13,7 +13,7 @@ Password1!
   - delete meetups (only available to creator)
   - meetups must be in future
   
-# Utilized Languages - Frameworks - Packages
+# Utilized Languages - Frameworks
 ## Languages
 - C#
 - Razor (HTML)
